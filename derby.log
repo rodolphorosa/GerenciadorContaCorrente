@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue May 30 20:13:44 BRT 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instância a816c00e-015c-5ba2-f279-000000d2fb18
+no diretório de banco de dados C:\Users\rodol\workspace\GerenciadorContaCorrente\agenciaDB\agencia 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_131-b11
+user.dir=C:\Users\rodol\workspace\GerenciadorContaCorrente
+os.name=Windows 10
+os.arch=x86
+os.version=10.0
+derby.system.home=null
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
