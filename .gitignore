@@ -3,3 +3,6 @@ agenciaDB
 
 #Source jars
 *.jar
+
+#Arquivos de log
+*.log
