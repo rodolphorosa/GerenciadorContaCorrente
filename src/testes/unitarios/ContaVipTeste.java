@@ -9,7 +9,7 @@ import excecoes.OperacaoInvalidaException;
 import excecoes.SaldoInsuficienteException;
 import modelos.ContaVip;
 
-public class ContaVIpTeste {
+public class ContaVipTeste {
 	
 	private ContaVip conta;
 	
