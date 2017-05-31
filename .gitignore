@@ -1,11 +1,5 @@
 #Banco de dados
 agenciaDB
 
-#Source jars
-*.jar
-
 #Arquivos de log
 *.log
-
-#Binary
-bin
