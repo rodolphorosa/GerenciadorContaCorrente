@@ -10,22 +10,22 @@ import excecoes.AcessoException;
 import excecoes.CampoObrigatorioException;
 
 public class Acesso {
-	
+
 	@CampoObrigatorio(obrigatorio = true)
 	private Conta conta;
-	
+
 	@CampoObrigatorio(obrigatorio = false)
 	private Date dataLogin;
-	
+
 	@CampoObrigatorio(obrigatorio = false)
 	private Time horaLogin;
-	
+
 	@CampoObrigatorio(obrigatorio = false)
 	private Date dataLogout;
-	
+
 	@CampoObrigatorio(obrigatorio = false)
 	private Time horaLogout;
-	
+
 	public Acesso(Conta conta, Date dataLogin, Time horaLogin, Date dataLogout, Time horaLogout) {
 		this.conta = conta;
 		this.dataLogin = dataLogin;
@@ -34,16 +34,13 @@ public class Acesso {
 		this.horaLogout = horaLogout;
 	}
 
-	public Acesso(Conta conta) 
-			throws IllegalArgumentException, 
-			IllegalAccessException, 
-			AcessoException, 
-			CampoObrigatorioException {
+	public Acesso(Conta conta)
+			throws IllegalArgumentException, IllegalAccessException, AcessoException, CampoObrigatorioException {
 		this.conta = conta;
 		Calendar c = Calendar.getInstance();
 		dataLogin = new Date(c.getTimeInMillis());
 		horaLogin = new Time(c.getTimeInMillis());
-		
+
 		validar();
 	}
 
@@ -67,44 +64,38 @@ public class Acesso {
 		return horaLogout;
 	}
 
-	public void iniciarDataHoraLogout() 
-			throws AcessoException, 
-			IllegalArgumentException, 
-			IllegalAccessException, 
-			CampoObrigatorioException {
-		
+	public void iniciarDataHoraLogout()
+			throws AcessoException, IllegalArgumentException, IllegalAccessException, CampoObrigatorioException {
+
 		Calendar c = Calendar.getInstance();
 		dataLogout = new Date(c.getTimeInMillis());
 		horaLogout = new Time(c.getTimeInMillis());
-		
+
 		validar();
 	}
-	
-	private void validar() 
-			throws AcessoException, 
-			CampoObrigatorioException, 
-			IllegalArgumentException, 
-			IllegalAccessException {
-		if(dataLogout != null && dataLogout.before(dataLogin)) {
+
+	private void validar()
+			throws AcessoException, CampoObrigatorioException, IllegalArgumentException, IllegalAccessException {
+		if (dataLogout != null && dataLogout.before(dataLogin)) {
 			throw new AcessoException();
-		} else if(horaLogout != null && horaLogout.before(horaLogin)) {
+		} else if (horaLogout != null && horaLogout.before(horaLogin)) {
 			throw new AcessoException();
 		}
-		
-		Class<?> classe = this.getClass(); 
+
+		Class<?> classe = this.getClass();
 		Field[] atributos = classe.getDeclaredFields();
-		
-		for(Field f : atributos) {
+
+		for (Field f : atributos) {
 			f.setAccessible(true);
 			CampoObrigatorio co = f.getAnnotation(CampoObrigatorio.class);
-			if(co.obrigatorio() && f.get(this) == null) {
+			if (co.obrigatorio() && f.get(this) == null) {
 				throw new CampoObrigatorioException(f.getName());
 			}
 		}
 	}
-	
+
 	public String toString() {
-		return String.format("%s: { login: %s %s, logout: %s %s }", 
-				conta.getNumero(), dataLogin, horaLogin, dataLogout, horaLogout);
+		return String.format("%s: { login: %s %s, logout: %s %s }", conta.getNumero(), dataLogin, horaLogin, dataLogout,
+				horaLogout);
 	}
 }

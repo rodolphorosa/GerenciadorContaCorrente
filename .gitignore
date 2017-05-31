@@ -3,3 +3,4 @@ agenciaDB
 
 #Arquivos de log
 *.log
+/bin/

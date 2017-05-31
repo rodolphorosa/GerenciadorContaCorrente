@@ -10,6 +10,13 @@ import excecoes.MovimentacaoInexistenteException;
 import mapeadores.CreateDB;
 import visoes.TelaLogin;
 
+/**
+ * Gerenciador de Conta Corrente 
+ * 
+ * @author Rodolpho Rosa da Silva
+ * @version 1.0
+ *
+ */
 public class Principal {
 	public static void main(String[] args) 
 			throws ParseException, 
