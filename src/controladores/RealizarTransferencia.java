@@ -6,7 +6,6 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.util.Calendar;
 
-import excecoes.AcessoNaoEncontradoException;
 import excecoes.CampoObrigatorioException;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.ContaNaoEncontradaException;
@@ -24,19 +23,39 @@ public class RealizarTransferencia {
 	private ContaMapper contaMapper;
 	private MovimentacaoMapper movimentacaoMapper;
 	
+	/**
+	 * @param conta Conta.
+	 * 
+	 * */
 	public RealizarTransferencia(Conta conta) {
 		this.conta = conta;
 		movimentacaoMapper = MovimentacaoMapper.getInstance();
 		contaMapper = ContaMapper.getInstance();
 	}
 	
+	/**
+	 * Transfere um valor de uma conta para outra.
+	 * 
+	 * A conta do destinatario eh solicitada. 
+	 * Se a conta fora mesma que a do cedente, eh lancada uma excecao.
+	 * 
+	 * Se nenhum erro ocorrer, sao debitados o valor e a taxa de transferencia da conta
+	 * do cedente, e depositado o valor na conta do destinatario.
+	 * 
+	 * Sao registradas duas movimentacoes (TRASNFERENCIA e DEBITO) 
+	 * com valores negativos na conta do cedente,
+	 * e uma (TRANSFERENCIA) com valor positivo na contan do destinatario.
+	 * 
+	 * @param numeroContaDestinatario Numero da conta do destinatario
+	 * @param quantia Valor a ser transferido.
+	 * 
+	 * */
 	public void realizarOperacaoTransferencia(String numeroContaDestinatario, double quantia) 
 			throws ClienteNaoEncontradoException, 
 			SQLException, 
 			ContaNaoEncontradaException, 
 			OperacaoInvalidaException, 
 			SaldoInsuficienteException, 
-			AcessoNaoEncontradoException, 
 			ParseException, 
 			IllegalArgumentException, 
 			IllegalAccessException, 

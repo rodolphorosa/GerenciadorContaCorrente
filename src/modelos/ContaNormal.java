@@ -7,6 +7,12 @@ public final class ContaNormal extends Conta {
 	
 	public static final double TAXA_TRANSFERENCIA = 8.;
 
+	/**
+	 * @param id Identificador da conta.
+	 * @param numero Numero da conta.
+	 * @param saldo Saldo atual da conta.
+	 * 
+	 * */
 	public ContaNormal(Long id, String numero, double saldo) {
 		super(id, numero, saldo);
 	}

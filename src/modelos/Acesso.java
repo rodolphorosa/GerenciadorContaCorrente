@@ -26,6 +26,14 @@ public class Acesso {
 	@CampoObrigatorio(obrigatorio = false)
 	private Time horaLogout;
 
+	/**
+	 * @param conta Conta.
+	 * @param dataLogin Data do login.
+	 * @param horaLogin Hora do login.
+	 * @param dataLogout Data do logout.
+	 * @param horaLogout Hora do logout.
+	 * 
+	 * */
 	public Acesso(Conta conta, Date dataLogin, Time horaLogin, Date dataLogout, Time horaLogout) {
 		this.conta = conta;
 		this.dataLogin = dataLogin;
@@ -34,6 +42,10 @@ public class Acesso {
 		this.horaLogout = horaLogout;
 	}
 
+	/**
+	 * @param conta Conta.
+	 * 
+	 * */
 	public Acesso(Conta conta)
 			throws IllegalArgumentException, IllegalAccessException, AcessoException, CampoObrigatorioException {
 		this.conta = conta;
@@ -64,6 +76,10 @@ public class Acesso {
 		return horaLogout;
 	}
 
+	/**
+	 * Inicializa a data e a hora do logout.
+	 * 
+	 * */
 	public void iniciarDataHoraLogout()
 			throws AcessoException, IllegalArgumentException, IllegalAccessException, CampoObrigatorioException {
 
@@ -74,6 +90,10 @@ public class Acesso {
 		validar();
 	}
 
+	/**
+	 * Verifica se a data e a hora do logout sao posteriores a data e hora de login.
+	 * 
+	 * */
 	private void validar()
 			throws AcessoException, CampoObrigatorioException, IllegalArgumentException, IllegalAccessException {
 		if (dataLogout != null && dataLogout.before(dataLogin)) {

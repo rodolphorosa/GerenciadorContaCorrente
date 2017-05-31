@@ -17,6 +17,12 @@ public final class ContaVip extends Conta {
 	public static final double TAXA_VISITA_GERENTE = 50.;
 	public static final double TAXA_SALDO_NEGATIVO = .001;
 
+	/**
+	 * @param id Identificador da conta.
+	 * @param numero Numero da conta.
+	 * @param saldo Saldo atual da conta.
+	 * 
+	 * */
 	public ContaVip(Long id, String numero, double saldo) {
 		super(id, numero, saldo);
 	}
@@ -46,6 +52,7 @@ public final class ContaVip extends Conta {
 		return quantia * TAXA_TRANSFERENCIA;
 	}
 	
+	@Deprecated
 	public void calcularSaldoNegativo(Date data, Time hora) throws ParseException {		
 		java.util.Date hoje = new java.util.Date(Calendar.getInstance().getTimeInMillis());
 		java.util.Date ultimoAcesso = null;
@@ -63,6 +70,11 @@ public final class ContaVip extends Conta {
 
 	@Override
 	public void run() {
+		/**
+		 *  Enquanto a thread nao eh interrompida, se o saldo for negativo
+		 *  seu valor eh decrescido a uma taxa de 0.1% por minuto.
+		 * 
+		 * */
 		while(true) {
 			try {
 				Thread.sleep(60000);

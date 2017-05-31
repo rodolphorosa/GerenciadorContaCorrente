@@ -19,12 +19,22 @@ public class RealizarSaque {
 	private ContaMapper contaMapper;
 	private Conta conta;
 	
+	/**
+	 * @param conta Conta.
+	 * 
+	 * */
 	public RealizarSaque(Conta conta) {
 		this.conta = conta;
 		contaMapper = ContaMapper.getInstance();
 		mMapper = MovimentacaoMapper.getInstance();
 	}
 	
+	/**
+	 * Debita uma quantia da conta do cliente.
+	 * 
+	 * @param quantia Valor a ser debitado.
+	 * 
+	 * */
 	public void realizarOperacaoSaque(double quantia) 
 			throws SaldoInsuficienteException, 
 			SQLException, 

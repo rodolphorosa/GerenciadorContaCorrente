@@ -28,6 +28,15 @@ public class Movimentacao {
 	@CampoObrigatorio(obrigatorio = true)
 	private TipoMovimentacao tipo;
 	
+	/**
+	 * @param id Identificador da movimentacao.
+	 * @param conta Conta do cliente.
+	 * @param data Data da movimentacao.
+	 * @param hora Hora da movimentacao.
+	 * @param valor Valor da movimentacao.
+	 * @param tipo Tipo da movimentacao.
+	 * 
+	 * */
 	public Movimentacao(Long id, Conta conta, Date data, Time hora, double valor, TipoMovimentacao tipo) {
 		this.id = id;
 		this.conta = conta;
@@ -37,6 +46,14 @@ public class Movimentacao {
 		this.tipo = tipo;
 	}
 	
+	/**
+	 * @param conta Conta do cliente.
+	 * @param data Data da movimentacao.
+	 * @param hora Hora da movimentacao.
+	 * @param valor Valor da movimentacao.
+	 * @param tipo Tipo da movimentacao.
+	 * 
+	 * */
 	public Movimentacao(Conta conta, Date data, Time hora, double valor, TipoMovimentacao tipo) 
 			throws IllegalArgumentException, 
 			IllegalAccessException, 
@@ -75,6 +92,14 @@ public class Movimentacao {
 		return tipo;
 	}
 	
+	/**
+	 * Verifica se todos os atributos obrigatorios foram inicializados.
+	 * 
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws CampoObrigatorioException
+	 * 
+	 * */
 	private void validar() 
 			throws IllegalArgumentException, 
 			IllegalAccessException, 

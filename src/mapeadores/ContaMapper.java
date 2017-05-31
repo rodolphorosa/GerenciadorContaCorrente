@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Collection;
 
-import excecoes.AcessoNaoEncontradoException;
 import excecoes.ContaNaoEncontradaException;
-import modelos.Acesso;
 import modelos.Conta;
 import modelos.ContaNormal;
 import modelos.ContaVip;
@@ -27,7 +25,6 @@ public class ContaMapper implements Mapeador<Conta> {
 	public Conta obterPorId(Long id) 
 			throws SQLException, 
 			ContaNaoEncontradaException, 
-			AcessoNaoEncontradoException, 
 			ParseException {
 		
 		Conta conta = null;
@@ -53,12 +50,6 @@ public class ContaMapper implements Mapeador<Conta> {
 					conta = new ContaNormal(id, numero, saldo);
 				} else {
 					conta = new ContaVip(id, numero, saldo);
-					if (saldo < 0) {
-						Acesso a = AcessoMapper.getInstance().obterMaisRecentePorConta(conta);
-						if(a != null) {
-							((ContaVip)(conta)).calcularSaldoNegativo(a.getDataLogout(), a.getHoraLogout());
-						}
-					}
 				}
 			} while(resultado.next());			
 		}
@@ -70,7 +61,6 @@ public class ContaMapper implements Mapeador<Conta> {
 	public Conta obterPorNumero(String numero) 
 			throws SQLException, 
 			ContaNaoEncontradaException, 
-			AcessoNaoEncontradoException, 
 			ParseException {
 		
 		Conta conta = null;
@@ -96,12 +86,6 @@ public class ContaMapper implements Mapeador<Conta> {
 					conta = new ContaNormal(id, numero, saldo);
 				} else {
 					conta = new ContaVip(id, numero, saldo);
-					if (saldo < 0) {
-						Acesso a = AcessoMapper.getInstance().obterMaisRecentePorConta(conta);
-						if (a != null) {
-							((ContaVip)(conta)).calcularSaldoNegativo(a.getDataLogout(), a.getHoraLogout());
-						}							
-					}
 				}
 			} while (resultado.next());
 		}

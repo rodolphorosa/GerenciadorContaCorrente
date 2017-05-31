@@ -30,7 +30,6 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import excecoes.AcessoException;
-import excecoes.AcessoNaoEncontradoException;
 import excecoes.CampoObrigatorioException;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.ContaNaoEncontradaException;
@@ -373,9 +372,6 @@ public class TelaCliente extends JFrame {
 					JOptionPane.showMessageDialog(TelaCliente.this, e);
 				} catch (SaldoInsuficienteException e) {
 					JOptionPane.showMessageDialog(TelaCliente.this, e);
-				} catch (AcessoNaoEncontradoException e) {
-					JOptionPane.showMessageDialog(TelaCliente.this, "Falha ao executar operação.");
-					cardLayout.show(cardPanel, "Tela Inicial");
 				} catch (CampoObrigatorioException e) {
 					JOptionPane.showMessageDialog(TelaCliente.this, "Falha ao executar operação.");
 					cardLayout.show(cardPanel, "Tela Inicial");

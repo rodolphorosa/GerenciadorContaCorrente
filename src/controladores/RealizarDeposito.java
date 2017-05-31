@@ -18,12 +18,22 @@ public class RealizarDeposito {
 	private ContaMapper contaMapper;
 	private Conta conta;
 	
+	/**
+	 * @param conta Conta.
+	 * 
+	 * */
 	public RealizarDeposito(Conta conta) {
 		this.conta = conta;
 		contaMapper = ContaMapper.getInstance();
 		mMapper = MovimentacaoMapper.getInstance();
 	}
 	
+	/**
+	 * Deposita um valor na conta do cliente.
+	 * 
+	 * @param quantia Valor a ser depositado.
+	 * 
+	 * */
 	public void realizarOperacaoDeposito(double quantia) 
 			throws SQLException, 
 			IllegalArgumentException, 

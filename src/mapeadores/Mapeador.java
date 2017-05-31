@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Collection;
 
-import excecoes.AcessoNaoEncontradoException;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.ContaNaoEncontradaException;
 import excecoes.MovimentacaoInexistenteException;
@@ -15,7 +14,6 @@ public interface Mapeador<T> {
 			throws SQLException, 
 			ClienteNaoEncontradoException, 
 			ContaNaoEncontradaException, 
-			AcessoNaoEncontradoException, 
 			ParseException, 
 			MovimentacaoInexistenteException;
 	
